@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://rajkumar1889.github.io/AllTimeService/sitemap.xml
