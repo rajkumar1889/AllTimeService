@@ -9,45 +9,46 @@
   </url>
 
   <url>
-    <loc>https://rajkumar1889.github.io/AllTimeService/#about</loc>
+    <loc>https://rajkumar1889.github.io/AllTimeService/about.html</loc> <!-- alag page ke liy # hata ya but agar alag page nhi chahiye to # laga do about ke age # laga tha -->
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://rajkumar1889.github.io/AllTimeService/#services</loc>
+    <loc>https://rajkumar1889.github.io/AllTimeService/services.html</loc> <!-- services ke age # laga tha -->
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://rajkumar1889.github.io/AllTimeService/#pricing</loc>
+    <loc>https://rajkumar1889.github.io/AllTimeService/pricing.html</loc>   <!--#-->
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://rajkumar1889.github.io/AllTimeService/#contact</loc>
+    <loc>https://rajkumar1889.github.io/AllTimeService/contact.html</loc> <!--#-->
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://rajkumar1889.github.io/AllTimeService/#products</loc>
+    <loc>https://rajkumar1889.github.io/AllTimeService/products.html</loc><!--#-->
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://rajkumar1889.github.io/AllTimeService/#work</loc>
+    <loc>https://rajkumar1889.github.io/AllTimeService/work.html</loc><!--#-->
     <lastmod>2025-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
 </urlset>
+
