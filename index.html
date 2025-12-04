@@ -123,7 +123,8 @@
     <p>If you need work, submit your details here.:</p>
     
     <h3>Boys who want work:</h3>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+    <!--<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">-->
+    <form id="workers-form"> <!-- 🔥 yeh line important hai -->
         <input type="text" name="name" placeholder="Name" required />
         <input type="text" name="skill" placeholder="Skill" required />
         <input type="text" name="mobile" placeholder="Mobile Number" required />
@@ -137,7 +138,8 @@
     <ul id="workers-list"></ul> 
 
     <h3>Businesses:</h3>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <!--<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">-->
+    <form id="business-details-form">
         <input type="text" name="business_name" placeholder="Business" required />
         <input type="text" name="work_type" placeholder="The work is done" required />
         <input type="text" name="business_address" placeholder="Business Address" required />
@@ -145,8 +147,8 @@
         <textarea name="extra" rows="2" placeholder="Extra Details (optional)"></textarea>
         <button type="submit">Request Karein</button>
     </form>
-    <h3>Business Work Requests:</h3>
-    <ul id="business-list"></ul>
+    <h3>Business-details-form:</h3>
+    <ul id="business-list"></ul> <!-- yah line important hai -->
 </section>
 
 <section id="contact">
@@ -193,9 +195,76 @@ loading="lazy"></iframe>
 <footer>
     <p>© 2025 All Time Service - All Rights Reserved</p>
 </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+
+<script>
+  // ---- Firebase Config ----
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // ---------- Worker Save ----------
+  const workersForm = document.getElementById("workers-form");
+  workersForm.addEventListener("submit", e => {
+    e.preventDefault();
+    db.collection("workers").add({
+      name: workersForm.name.value,
+      skill: workersForm.skill.value,
+      mobile: workersForm.mobile.value,
+      address: workersForm.address.value,
+      extra: workersForm.extra.value,
+      time: new Date()
+    }).then(() => workersForm.reset());
+  });
+
+  // ---------- Worker Live Show ----------
+  db.collection("workers").orderBy("time", "desc").onSnapshot(snapshot => {
+    const list = document.getElementById("workers-list");
+    list.innerHTML = "";
+    snapshot.forEach(doc => {
+      const d = doc.data();
+      list.innerHTML += `<li><b>${d.name}</b> — ${d.skill}, ${d.mobile}, ${d.address}</li>`;
+    });
+  });
+
+  // ---------- Business Save ----------
+  const businessForm = document.getElementById("business-form");
+  businessForm.addEventListener("submit", e => {
+    e.preventDefault();
+    db.collection("businesses").add({
+      name: businessForm.business_name.value,
+      work: businessForm.work_type.value,
+      mobile: businessForm.contact_number.value,
+      address: businessForm.business_address.value,
+      extra: businessForm.extra.value,
+      time: new Date()
+    }).then(() => businessForm.reset());
+  });
+
+  // ---------- Business Live Show ----------
+  db.collection("businesses").orderBy("time", "desc").onSnapshot(snapshot => {
+    const list = document.getElementById("business-list");
+    list.innerHTML = "";
+    snapshot.forEach(doc => {
+      const d = doc.data();
+      list.innerHTML += `<li><b>${d.name}</b> — ${d.work}, ${d.mobile}, ${d.address}</li>`;
+    });
+  });
+</script>
+
 
 </body>
 </html>
+
 
 
 
