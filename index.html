@@ -163,7 +163,7 @@
     <p>If you need work, submit your details here.:</p>
     
     <h3>Boys who want work:</h3>
-    <!--<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">-->
+    <!--<form action="https://formspree.io/f/xanzgzwp" method="POST" enctype="multipart/form-data">-->
     <form id="workers-form"> <!-- 🔥 yeh line important hai -->
         <input type="text" name="name" placeholder="Name" required />
         <input type="text" name="skill" placeholder="Skill" required />
@@ -178,8 +178,9 @@
     <ul id="workers-list"></ul> 
 
     <h3>Businesses:</h3>
-    <!--<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">-->
-    <form id="business-details-form">
+    <form action="https://formspree.io/f/xanzgzwp" method="POST">
+    <!--<form id="business-details-form">-->
+    <form id="business-form">
         <input type="text" name="business_name" placeholder="Business" required />
         <input type="text" name="work_type" placeholder="The work is done" required />
         <input type="text" name="business_address" placeholder="Business Address" required />
@@ -206,11 +207,13 @@
 
 <section id="contact">
     <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form action="https://formspree.io/f/xanzgzwp" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
+        <p id="form-message" style="color: green; font-weight: bold; margin-top: 10px;"></p>
+
     </form>
     <div class="contact-buttons">
         <a href="https://wa.me/918595507338" target="_blank">WhatsApp Us</a>
@@ -254,12 +257,12 @@ loading="lazy"></iframe>
 <script>
   // ---- Firebase Config ----
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID"
+    apiKey: "AIzaSyBxxxxxxxxxxxxxxxxxxxx",
+    authDomain: "myproject.firebaseapp.com",
+    projectId: "myproject",
+    storageBucket: "myproject.appspot.com",
+    messagingSenderId: "934567889901",
+    appId: "1:934567889901:web:8bb9c0caa85f8f34c6aa6d"
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -317,6 +320,7 @@ loading="lazy"></iframe>
 
 </body>
 </html>
+
 
 
 
