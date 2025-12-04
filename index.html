@@ -120,9 +120,9 @@
 
 <section id="work">
     <h2> Workers:</h2>
-    <p>Agar aapko kaam chahiye ya kaam karne wale chahiye, yahan apni details submit karein:</p>
+    <p>If you need work, submit your details here.:</p>
     
-    <h3>Ladke jo kaam chahte hain:</h3>
+    <h3>Boys who want work:</h3>
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Name" required />
         <input type="text" name="skill" placeholder="Skill" required />
@@ -132,6 +132,9 @@
         <textarea name="extra" rows="2" placeholder="Extra Details (optional)"></textarea>
         <button type="submit">Register Karain</button>
     </form>
+    
+    <h3>Registered Workers / Job Seekers:</h3>
+    <ul id="workers-list"></ul> 
 
     <h3>Businesses:</h3>
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
@@ -142,6 +145,8 @@
         <textarea name="extra" rows="2" placeholder="Extra Details (optional)"></textarea>
         <button type="submit">Request Karein</button>
     </form>
+    <h3>Business Work Requests:</h3>
+    <ul id="business-list"></ul>
 </section>
 
 <section id="contact">
