@@ -175,10 +175,9 @@
         <input type="text" name="name" placeholder="Name" required />
         <input type="text" name="skill" placeholder="Skill" required />
         <input type="text" name="mobile" placeholder="Mobile Number" required />
-        <input type="text" name="address" placeholder="Address" required />
-        <!--<input type="file" name="photo" accept="image/*" />-->
-        <textarea name="extra" rows="2" placeholder="Extra Details (optional)"></textarea>
-        <button type="submit">Register Karain</button>
+        <input type="text" id="worker-address" placeholder="Complete Address" required>
+        <textarea id="worker-extra" placeholder="Experience or Extra Info"></textarea>
+        <button type="button" onclick="submitWorker()">Submit Worker</button>
     </form>
     
     <h3>Registered Workers / Job Seekers:</h3>
@@ -190,10 +189,10 @@
     <form id="business-form">
         <input type="text" name="business_name" placeholder="Business" required />
         <input type="text" name="work_type" placeholder="The work is done" required />
-        <input type="text" name="business_address" placeholder="Business Address" required />
+        <input type="text" id="business-address" placeholder="Business Location" required>
         <input type="text" name="contact_number" placeholder="Contact Number" required />
-        <textarea name="extra" rows="2" placeholder="Extra Details (optional)"></textarea>
-        <button type="submit">Request Karein</button>
+       <textarea id="business-info" placeholder="Business Details"></textarea>
+        <button type="button" onclick="submitBusiness()">Submit Business</button>
     </form>
     <h3>Business Work Requests:</h3>
     <ul id="business-list"></ul> <!-- yah line important hai -->
@@ -261,6 +260,18 @@ loading="lazy"></iframe>
 <!-- # Firebase Scripts for Live Data -->
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key="AIzaSyAwjcfm8Y1ukI2GvgACDxrpweeWYtqlZuI&libraries"=places"></script>
+<script>
+  function enableAutoFill() {
+    let workerInput = document.getElementById("worker-address");
+    let businessInput = document.getElementById("business-address");
+
+    new google.maps.places.Autocomplete(workerInput, { types: ["geocode"] });
+    new google.maps.places.Autocomplete(businessInput, { types: ["geocode"] });
+  }
+  google.maps.event.addDomListener(window, "load", enableAutoFill);
+</script>
+
 
 <script>
   // ---- Firebase Config ----
@@ -329,6 +340,7 @@ const firebaseConfig = {
 
 </body>
 </html>
+
 
 
 
