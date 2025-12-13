@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /   # # Google sab pages crawl kare
+Allow: /
 
 Sitemap: https://rajkumar1889.github.io/AllTimeService/sitemap.xml
-
