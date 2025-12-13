@@ -3,9 +3,14 @@
 
   <url>
     <loc>https://rajkumar1889.github.io/AllTimeService/</loc>
-    <lastmod>2025-12-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-12</lastmod>
     <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://rajkumar1889.github.io/AllTimeService/viewer.html</loc>
+    <lastmod>2025-12-12</lastmod>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
