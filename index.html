@@ -607,39 +607,43 @@ footer {
 
   const app = initializeApp(firebaseConfig);
   console.log("Firebase initialized:", app);
-  //const db = getFirestore(app);
+  const db = getFirestore(app);
 
-  // Helper to create LI safely
-  function createLI(text) {
-    const li = document.createElement('li');
-    li.textContent = text;
-    return li;
+const workersForm = document.getElementById('workers-form');
+const businessForm = document.getElementById('business-form');
+
+const workersList = document.getElementById('workers-list');
+const businessList = document.getElementById('business-list');
+
+function createLI(text) {
+  const li = document.createElement('li');
+  li.textContent = text;
+  return li;
+}
+
+// Workers submit
+workersForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('worker-name').value.trim(),
+    skill: document.getElementById('worker-skill').value.trim(),
+    mobile: document.getElementById('worker-phone').value.trim(),
+    address: document.getElementById('worker-address').value.trim(),
+    extra: document.getElementById('worker-extra').value.trim(),
+    time: serverTimestamp()
+  };
+  try {
+    await addDoc(collection(db, 'workers'), data);
+    workersForm.reset();
+    alert('Worker submitted — thank you!');
+  } catch (err) {
+    console.error(err);
+    alert('Error saving. Try again.');
   }
+});
 
-  // ---------- Workers Form ----------
-  const workersForm = document.getElementById('workers-from');
-  workersForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = {
-      name: document.getElementById('worker-name').value.trim(),
-      skill: document.getElementById('worker-skill').value.trim(),
-      mobile: document.getElementById('worker-phone').value.trim(),
-      address: document.getElementById('worker-address').value.trim(),
-      extra: document.getElementById('worker-extra').value.trim(),
-      time: serverTimestamp()
-    };
-    try {
-      await addDoc(collection(db, 'workers'), data);
-      workersForm.reset();
-      alert('Worker submitted — thank you!');
-    } catch (err) {
-      console.error(err);
-      alert('Error saving. Try again.');
-    }
-  });
-
-  // Live show workers (time field missing documents safe)
-const qWorkers = query(collection(db, 'workers'), orderBy('time', 'desc'));  // orderBy hata diya
+// Live workers
+const qWorkers = query(collection(db, 'workers'), orderBy('time', 'desc'));
 onSnapshot(qWorkers, snapshot => {
   workersList.innerHTML = '';
   snapshot.forEach(doc => {
@@ -649,30 +653,29 @@ onSnapshot(qWorkers, snapshot => {
   });
 });
 
+// Business submit
+businessForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('business-name').value.trim(),
+    work: document.getElementById('business-work').value.trim(),
+    mobile: document.getElementById('business-phone').value.trim(),
+    address: document.getElementById('business-address').value.trim(),
+    extra: document.getElementById('business-extra').value.trim(),
+    time: serverTimestamp()
+  };
+  try {
+    await addDoc(collection(db, 'businesses'), data);
+    businessForm.reset();
+    alert('Business request submitted — thank you!');
+  } catch (err) {
+    console.error(err);
+    alert('Error saving. Try again.');
+  }
+});
 
-  // ---------- Business Form ----------
-  const businessForm = document.getElementById('business-form');
-  businessForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = {
-      name: document.getElementById('business-name').value.trim(),
-      work: document.getElementById('business-work').value.trim(),
-      mobile: document.getElementById('business-phone').value.trim(),
-      address: document.getElementById('business-address').value.trim(),
-      extra: document.getElementById('business-extra').value.trim(),
-      time: serverTimestamp()
-    };
-    try {
-      await addDoc(collection(db, 'businesses'), data);
-      businessForm.reset();
-      alert('Business request submitted — thank you!');
-    } catch (err) {
-      console.error(err);
-      alert('Error saving. Try again.');
-    }
-  });
-//---- live Businesse----
-  const qBiz = query(collection(db, 'businesses'), orderBy('time', 'desc'));  // orderBy hata diya
+// Live businesses
+const qBiz = query(collection(db, 'businesses'), orderBy('time', 'desc'));
 onSnapshot(qBiz, snapshot => {
   businessList.innerHTML = '';
   snapshot.forEach(doc => {
@@ -681,7 +684,6 @@ onSnapshot(qBiz, snapshot => {
     businessList.appendChild(createLI(text));
   });
 });
-
 
   // ---------- Google Maps Autocomplete ----------
   function enableAutoFill() {
@@ -702,6 +704,7 @@ onSnapshot(qBiz, snapshot => {
 
 </body>
 </html>
+
 
 
 
