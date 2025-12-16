@@ -636,17 +636,17 @@ footer {
     }
   });
 
-  // Live show workers
-  const workersList = document.getElementById('workers-list');
-  const qWorkers = query(collection(db, 'workers'), orderBy('time', 'desc'));
-  onSnapshot(qWorkers, snapshot => {
-    workersList.innerHTML = '';
-    snapshot.forEach(doc => {
-      const d = doc.data();
-      const text = `${d.name || '-'} — ${d.skill || '-'}, ${d.mobile || '-'} — ${d.address || '-'}`;
-      workersList.appendChild(createLI(text));
-    });
+  // Live show workers (time field missing documents safe)
+const qWorkers = collection(db, 'workers');  // orderBy hata diya
+onSnapshot(qWorkers, snapshot => {
+  workersList.innerHTML = '';
+  snapshot.forEach(doc => {
+    const d = doc.data();
+    const text = `${d.name || '-'} — ${d.skill || '-'}, ${d.mobile || '-'} — ${d.address || '-'}`;
+    workersList.appendChild(createLI(text));
   });
+});
+
 
   // ---------- Business Form ----------
   const businessForm = document.getElementById('business-form');
@@ -670,17 +670,16 @@ footer {
     }
   });
 
-  // Live show businesses
-  const businessList = document.getElementById('business-list');
-  const qBiz = query(collection(db, 'businesses'), orderBy('time', 'desc'));
-  onSnapshot(qBiz, snapshot => {
-    businessList.innerHTML = '';
-    snapshot.forEach(doc => {
-      const d = doc.data();
-      const text = `${d.name || '-'} — ${d.work || '-'}, ${d.mobile || '-'} — ${d.address || '-'}`;
-      businessList.appendChild(createLI(text));
-    });
+ const qBiz = collection(db, 'businesses');  // orderBy hata diya
+onSnapshot(qBiz, snapshot => {
+  businessList.innerHTML = '';
+  snapshot.forEach(doc => {
+    const d = doc.data();
+    const text = `${d.name || '-'} — ${d.work || '-'}, ${d.mobile || '-'} — ${d.address || '-'}`;
+    businessList.appendChild(createLI(text));
   });
+});
+
 
   // ---------- Google Maps Autocomplete ----------
   function enableAutoFill() {
@@ -701,6 +700,7 @@ footer {
 
 </body>
 </html>
+
 
 
 
