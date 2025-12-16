@@ -617,7 +617,7 @@ footer {
   }
 
   // ---------- Workers Form ----------
-  const workersForm = document.getElementById('workers-list');
+  const workersForm = document.getElementById('workers-from');
   workersForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
@@ -651,7 +651,7 @@ onSnapshot(qWorkers, snapshot => {
 
 
   // ---------- Business Form ----------
-  const businessForm = document.getElementById('business-list');
+  const businessForm = document.getElementById('business-form');
   businessForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
@@ -702,6 +702,7 @@ onSnapshot(qBiz, snapshot => {
 
 </body>
 </html>
+
 
 
 
