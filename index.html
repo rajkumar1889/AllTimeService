@@ -615,7 +615,7 @@ footer {
   }
 
   // ---------- Workers Form ----------
-  const workersForm = document.getElementById('workers-form');
+  const workersForm = document.getElementById('workers-list');
   workersForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
@@ -637,7 +637,7 @@ footer {
   });
 
   // Live show workers (time field missing documents safe)
-const qWorkers = collection(db, 'workers');  // orderBy hata diya
+const qWorkers = query(collection(db, 'workers'), orderBy('time', 'desc'));  // orderBy hata diya
 onSnapshot(qWorkers, snapshot => {
   workersList.innerHTML = '';
   snapshot.forEach(doc => {
@@ -649,7 +649,7 @@ onSnapshot(qWorkers, snapshot => {
 
 
   // ---------- Business Form ----------
-  const businessForm = document.getElementById('business-form');
+  const businessForm = document.getElementById('business-list');
   businessForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
@@ -669,8 +669,8 @@ onSnapshot(qWorkers, snapshot => {
       alert('Error saving. Try again.');
     }
   });
-
- const qBiz = collection(db, 'businesses');  // orderBy hata diya
+//---- live Businesse----
+  const qBiz = query(collection(db, 'businesses'), orderBy('time', 'desc'));  // orderBy hata diya
 onSnapshot(qBiz, snapshot => {
   businessList.innerHTML = '';
   snapshot.forEach(doc => {
@@ -700,6 +700,7 @@ onSnapshot(qBiz, snapshot => {
 
 </body>
 </html>
+
 
 
 
