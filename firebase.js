@@ -2,12 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_AUTH_DOMAIN",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_STORAGE_BUCKET",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "AIzaSyAwjcfm8Y1ukI2GvgACDxrpweeWYtqlZuI",
+  authDomain: "alltimeservice-56229.firebaseapp.com",
+  projectId: "alltimeservice-56229",
+  storageBucket: "alltimeservice-56229.firebasestorage.app",
+  messagingSenderId: "371384733100",
+  appId: "1:371384733100:web:5c00e04d9f1c476a01be09",
+  measurementId: "G-ETRH2FCH70"
 };
 
 const app = initializeApp(firebaseConfig);
